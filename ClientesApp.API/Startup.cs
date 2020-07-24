@@ -31,6 +31,7 @@ namespace ClientesApp.API
             string connectionString = ConfigurationExtensions
                                         .GetConnectionString(this.Configuration, "DefaultConnectionString");
             services.AddDbContext<DataContext>( db => db.UseSqlServer(connectionString));
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +47,7 @@ namespace ClientesApp.API
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
