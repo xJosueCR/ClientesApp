@@ -8,7 +8,7 @@ namespace ClientesApp.API.Data
         public DataContext(DbContextOptions<DataContext> options): base(options){}
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<EstadoCivil> EstadosCiviles { get; set; }
-        
+        public DbSet<Usuario> Usuarios { get; set; }
         protected override void OnModelCreating(ModelBuilder modelbuilder){
             //identificacion en Cliente unique
             modelbuilder.Entity<Cliente>()
